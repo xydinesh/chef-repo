@@ -1,0 +1,41 @@
+{
+  "name": "ipaddr_extensions",
+  "description": "Adds the ipaddr_extensions gem to chef",
+  "long_description": "ipaddr_extensions\n=================\n\nAdds the `ipaddr_extensions` gem to chef using the chef_gem provider. This adds a\ntop-level ohai attribute called `privateaddress`. If there is an RFC1918 IP address,\nthis is assigned to `node.privateaddress`.\n\n## Usage\n\nInclude `ipaddr_extensions` in your Berksfile or Cheffile:\n\n```ruby\ncookbook 'ipaddr_extensions'\n```\n\nInclude `ipaddr_extensions` in your node's `run_list`:\n\n```json\n{\n  \"name\":\"my_node\",\n  \"run_list\": [\n    \"recipe[ipaddr_extensions]\"\n  ]\n}\n```\n\nIf a cookbook depends on knowing about private ip addresses, depend or suggest this cookbook.\n\n```ruby\ninclude_recipe 'ipaddr_extensions'\n```\n\n## Warning\n\nThis cookbook does terrible things that should never ever be done in\nChef, nor in Ruby for that matter. It should only do this once, after\nwhich the `ipaddr_extensions` gem will be installed and working. There\nare so many reasons this could go wrong, though.\n\n## Running tests\n\nThis cookbook runs assertions as a part of a fake cookbook using\ntest-kitchen.\n\n```bash\nbundle\nbundle exec kitchen converge\n```\n\nThe test suite depends on network bridging in vagrant. This requires an\nexact match of the interface name in order to work. If you run into\ntrouble, temporarily change `.kitchen.yml#L12` to match the name of your\nethernet adapter.\n\n## Contributing\n\n1. Fork the repository on Github\n2. Create a named feature branch (like `add_component_x`)\n3. Write you change\n4. Write tests for your change (if applicable)\n5. Run the tests, ensuring they all pass\n6. Submit a Pull Request using Github\n",
+  "maintainer": "Eric Saxby",
+  "maintainer_email": "sax@livinginthepast.org",
+  "license": "MIT",
+  "platforms": {
+    "redhat": ">= 0.0.0",
+    "centos": ">= 0.0.0",
+    "scientific": ">= 0.0.0",
+    "fedora": ">= 0.0.0",
+    "debian": ">= 0.0.0",
+    "ubuntu": ">= 0.0.0",
+    "arch": ">= 0.0.0",
+    "freebsd": ">= 0.0.0",
+    "amazon": ">= 0.0.0",
+    "smartos": ">= 0.0.0"
+  },
+  "dependencies": {
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+    "rubygems-compatibility": ">= 0.0.0"
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+    "ipaddr_extensions::default": "Installs ipaddr_extensions via chef_gem"
+  },
+  "version": "0.3.0"
+}
