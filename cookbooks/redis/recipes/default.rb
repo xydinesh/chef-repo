@@ -23,7 +23,7 @@ directory node[:redis][:dir] do
   action :create
 end
 
-dirctory node[:redis][:data_dir] do
+directory node[:redis][:data_dir] do
   owner "redis"
   mode "0755"
   action :create
