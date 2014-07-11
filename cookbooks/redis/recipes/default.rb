@@ -34,16 +34,16 @@ directory node[:redis][:log_dir] do
   action :create
 end
 
-remote_file "#{Chef::Config[:file_cachef_path]}/redis.tar.gz" do
-  source "https://github.com/antirez/redis/tarball/v2.0.4-stable"
+remote_file "#{Chef::Config[:file_cache_path]}/redis-2.8.12.tar.gz" do
+  source "http://download.redis.io/releases/redis-2.8.12.tar.gz"
   action :create_if_missing
 end
 
 bash "compile_redis_source" do
   cwd Chef::Config[:file_cache_path]
   code <<-EOH
-    tar zxf redis.tar.gz
-    cd antirez-redis-55479a7
+    tar zxf redis-2.8.12.tar.gz
+    cd redis-2.8.12
     make && make install
   EOH
   creates "/usr/local/bin/redis-server"
